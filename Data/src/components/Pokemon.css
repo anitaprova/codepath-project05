@@ -1,0 +1,17 @@
+.pokemon-main{
+	background-color: white;
+	color:black;
+	border-radius: 2%;
+}
+
+.pokemon {
+	padding: 2%;
+}
+
+li {
+  margin-bottom: 50px;
+}
+
+.item{
+	margin: 5px;
+}

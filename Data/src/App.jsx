@@ -33,26 +33,21 @@ function App() {
   }, [all]);
 
   const searchItems = (searchValue) => {
-    setSearchInput(searchValue);
-    if (searchValue !== "") {
-      const filteredData = list.results.filter((item) =>
-        item.name.includes(searchValue.toLowerCase())
-      );
-      setFilteredResults(filteredData);
-    } else {
-      setFilteredResults(list);
-    }
-  };
+    setSearchInput(searchValue.toLowerCase());
 
-  const filterType = (inputType) => {
-    setSelectedType(inputType);
-    if (inputType !== "") {
-      const filter = all.filter((pokemon) =>
-        pokemon.types.some((type) => type.type.name === inputType)
-      );
-      setFilteredResults(filter);
-    } else {
+    if (!searchValue && !selectedType) {
       setFilteredResults(list.results);
+    } else {
+      const filteredData = list.results.filter((pokemon, index) => {
+        const nameMatch = pokemon.name.includes(searchValue.toLowerCase());
+
+        const typeMatch =
+          selectedType === "" ||
+          all[index].types.some((type) => type.type.name === selectedType);
+
+        return nameMatch && typeMatch;
+      });
+      setFilteredResults(filteredData);
     }
   };
 
@@ -87,7 +82,7 @@ function App() {
         onChange={(inputString) => searchItems(inputString.target.value)}
       />
 
-      <select onChange={(e) => filterType(e.target.value)}>
+      <select onChange={(e) => setSelectedType(e.target.value)}>
         <option value="">All Types</option>
         <option value="fire">Fire</option>
         <option value="water">Water</option>

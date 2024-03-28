@@ -20,21 +20,23 @@ function Pokemon({ name, url }) {
   // }, [info]);
 
   return (
-    <div className="pokemon-main">
-      <li className="pokemon">
-        <p>{name}</p>
-        <p className="item"> Weight: {info.weight}</p>
-        <p className="item"> Height: {info.height}</p>
-        <p className="item">
-          {" "}
-          Type(s):
-          {info.types &&
-            info.types.map((t, index) => (
-              <span key={index}> {t.type.name} </span>
-            ))}
-        </p>
-      </li>
-    </div>
+    <>
+      <div className="pokemon-main">
+        <li className="pokemon">
+          <p>{name}</p>
+          <p className="item"> Weight: {info.weight}</p>
+          <p className="item"> Height: {info.height}</p>
+          <p className="item">
+            {" "}
+            Type(s):
+            {info.types &&
+              info.types.map((t, index) => (
+                <span key={index}> {t.type.name} </span>
+              ))}
+          </p>
+        </li>
+      </div>
+    </>
   );
 }
 

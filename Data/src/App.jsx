@@ -44,6 +44,18 @@ function App() {
     }
   };
 
+  const filterType = (inputType) => {
+    setSelectedType(inputType);
+    if (inputType !== "") {
+      const filter = all.filter((pokemon) =>
+        pokemon.types.some((type) => type.type.name === inputType)
+      );
+      setFilteredResults(filter);
+    } else {
+      setFilteredResults(list.results);
+    }
+  };
+
   const calculateMeanWeight = () => {
     if (!all || all.length === 0) {
       return 0;
@@ -66,18 +78,6 @@ function App() {
     return totalHeight / all.length;
   };
 
-  const filterByType = (type) => {
-    setSelectedType(type);
-    if (type === "") {
-      setFilteredResults(list);
-    } else {
-      const filteredData = list.filter((pokemon) =>
-        pokemon.types.some((pokemonType) => pokemonType.type.name === type)
-      );
-      setFilteredResults(filteredData);
-    }
-  };
-
   return (
     <div className="whole-page">
       <h1>View Pokemon</h1>
@@ -87,7 +87,7 @@ function App() {
         onChange={(inputString) => searchItems(inputString.target.value)}
       />
 
-      <select onChange={(e) => filterByType(e.target.value)}>
+      <select onChange={(e) => filterType(e.target.value)}>
         <option value="">All Types</option>
         <option value="fire">Fire</option>
         <option value="water">Water</option>

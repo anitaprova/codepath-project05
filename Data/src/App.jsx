@@ -7,6 +7,7 @@ function App() {
   const [filteredResults, setFilteredResults] = useState();
   const [searchInput, setSearchInput] = useState("");
   const [all, setAll] = useState();
+  const [selectedType, setSelectedType] = useState("");
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -48,7 +49,9 @@ function App() {
       return 0;
     }
     const totalWeight = all.reduce(
-      (total, pokemon) => total + pokemon.weight, 0);
+      (total, pokemon) => total + pokemon.weight,
+      0
+    );
     return totalWeight / all.length;
   };
 
@@ -63,6 +66,18 @@ function App() {
     return totalHeight / all.length;
   };
 
+  const filterByType = (type) => {
+    setSelectedType(type);
+    if (type === "") {
+      setFilteredResults(list);
+    } else {
+      const filteredData = list.filter((pokemon) =>
+        pokemon.types.some((pokemonType) => pokemonType.type.name === type)
+      );
+      setFilteredResults(filteredData);
+    }
+  };
+
   return (
     <div className="whole-page">
       <h1>View Pokemon</h1>
@@ -71,6 +86,13 @@ function App() {
         placeholder="Search..."
         onChange={(inputString) => searchItems(inputString.target.value)}
       />
+
+      <select onChange={(e) => filterByType(e.target.value)}>
+        <option value="">All Types</option>
+        <option value="fire">Fire</option>
+        <option value="water">Water</option>
+        <option value="grass">Grass</option>
+      </select>
 
       {searchInput.length > 0
         ? filteredResults && (

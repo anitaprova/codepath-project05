@@ -6,14 +6,15 @@
 }
 
 nav {
-  position: fixed; 
-  top: 0; 
-  right: 0; 
+  position: fixed;
+  top: 0;
+  right: 1;
 }
 
-.home-link 
-{
-  border:1px dotted white;
-  background:#1d1f1d;
-  width:75px;
+.home-link {
+  border: 1px solid white;
+  background-color: blue;
+  width: 75px;
+  border-radius: 5%;
+  padding: 5%;
 }

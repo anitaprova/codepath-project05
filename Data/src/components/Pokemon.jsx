@@ -24,11 +24,11 @@ function Pokemon({ index, name, url }) {
     <div className="pokemon-main">
       <li className="pokemon">
         <Link
-          style={{ color: "Black" }}
+          style={{ textDecoration:"none", color: "White" }}
           to={`/Pokemon/${url.charAt(url.length - 2)}`}
           key={url.charAt(url.length - 2)}
         >
-          <p>{name}</p>
+          <p>{name.toUpperCase()}</p>
           <p className="item"> Weight: {info.weight}</p>
           <p className="item"> Height: {info.height}</p>
           <p className="item">

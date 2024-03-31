@@ -5,13 +5,15 @@
 }
 
 .details-container {
+  
+}
+
+.pokemon-details {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 15%;
-}
-
-.pokemon-details {
+  
   font-family: "Times New Roman", Times, serif;
 }
 
@@ -19,10 +21,10 @@
   font-family: "Courier New", Courier, monospace;
 }
 
-.pokemon-details > img {
+img {
   width: 75%;
   height: auto;
-  background-color: white;
+  background-color: #3461aa;
   border-radius: 5%;
 }
 
@@ -30,13 +32,11 @@
   display: flex;
   flex-direction: column;
 
-  background-color: white;
+  background-color: yellow;
   font-family: "Times New Roman", Times, serif;
   color: black;
   border-radius: 5%;
-  padding: 25%;
+  padding: 5%;
   font-size: 18px;
-  margin-top: 50%;
-  margin-left: -25%;
-  margin-right: -25%;
+  justify-content: center;
 }

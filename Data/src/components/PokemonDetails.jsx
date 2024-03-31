@@ -34,30 +34,27 @@ function PokemonDetails() {
 
   return (
     <div className="details-container">
-      {fullDetails && (
+      {fullDetails && fullDetails.stats && (
         <div className="pokemon-details">
-          <h1>{fullDetails.name.toUpperCase()}</h1>
-          <img src={fullDetails.img} />
-          <p>Height: {fullDetails.height}</p>
-          <p>Weight: {fullDetails.weight}</p>
-          <p>Types: {fullDetails.types.join(" ")}</p>
-          <p>Abilities: {fullDetails.abilities.join(", ")}</p>
-          <p>Base Experince: {fullDetails.base_experince}</p>
-        </div>
-      )}
-
-      <div>
-        {fullDetails && fullDetails.stats && (
+          <div className="basicinfo">
+            <h1>{fullDetails.name.toUpperCase()}</h1>
+            <img src={fullDetails.img} />
+            <p>Height: {fullDetails.height}</p>
+            <p>Weight: {fullDetails.weight}</p>
+            <p>Types: {fullDetails.types.join(" ")}</p>
+            <p>Abilities: {fullDetails.abilities.join(", ")}</p>
+            <p>Base Experince: {fullDetails.base_experince}</p>
+          </div>
           <div className="stats">
             Stats:
             {fullDetails.stats.map((item, index) => (
-              
-              <div key={index}>{item.stat.name} : {item.base_stat}</div>
-            ) 
-            )}
+              <div key={index}>
+                {item.stat.name} : {item.base_stat}
+              </div>
+            ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

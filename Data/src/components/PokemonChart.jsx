@@ -40,8 +40,6 @@ const PokemonChart = () => {
     return filteredData;
   };
 
-  // console.log(cleanData(data));
-
   return (
     <div>
       {data ? (
@@ -65,10 +63,10 @@ const PokemonChart = () => {
                 activeDot={{ r: 5 }}
               />
               <CartesianGrid strokeDasharray="5 5" />
-              <XAxis dataKey="name" interval={0} angle={35} dx={20}>
+              <XAxis dataKey="name" interval={0} angle={35} dx={20} dy={10}>
                 <Label
                   value="Berries"
-                  offset={-20}
+                  offset={-25}
                   position="insideBottom"
                 />
               </XAxis>

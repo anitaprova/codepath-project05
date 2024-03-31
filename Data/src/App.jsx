@@ -76,52 +76,56 @@ function App() {
 
   return (
     <div className="whole-page">
-      <h1>Pokemon</h1>
-      <input
-        type="text"
-        placeholder="Search..."
-        onChange={(inputString) => searchItems(inputString.target.value)}
-      />
+      <h1 className="title">Pokemon</h1>
+      <div className="search">
+        <input
+          type="text"
+          placeholder="Search..."
+          onChange={(inputString) => searchItems(inputString.target.value)}
+        />
 
-      <select onChange={(e) => setSelectedType(e.target.value)}>
-        <option value="">All Types</option>
-        <option value="fire">Fire</option>
-        <option value="water">Water</option>
-        <option value="grass">Grass</option>
-      </select>
+        <select onChange={(e) => setSelectedType(e.target.value)}>
+          <option value="">All Types</option>
+          <option value="fire">Fire</option>
+          <option value="water">Water</option>
+          <option value="grass">Grass</option>
+        </select>
+      </div>
 
-      <PokemonChart />
-
-      {searchInput.length > 0
-        ? filteredResults && (
-            <>
-              <p>Currently Viewing: {filteredResults.length}</p>
-
-              {filteredResults.map((pokemon) => (
-                <Pokemon
-                  key={pokemon.name}
-                  name={pokemon.name}
-                  url={pokemon.url}
-                />
-              ))}
-            </>
-          )
-        : list && (
-            <>
-              <p>Currently Viewing: {list.results.length}</p>
-              <p>Mean Weight: {calculateMeanWeight()}</p>
-              <p>Mean Height: {calculateMeanHeight()}</p>
-              <ul>
-                {list.results.map((pokemon) => (
-                  <Pokemon
-                    key={pokemon.name}
-                    name={pokemon.name}
-                    url={pokemon.url}
-                  />
-                ))}
-              </ul>
-            </>
-          )}
+      <div className="pokemon-body">
+        <PokemonChart />
+        <div>
+          {searchInput.length > 0
+            ? filteredResults && (
+                <>
+                  <p>Currently Viewing: {filteredResults.length}</p>
+                  {filteredResults.map((pokemon) => (
+                      <Pokemon
+                        key={pokemon.name}
+                        name={pokemon.name}
+                        url={pokemon.url}
+                      />
+                  ))}
+                </>
+              )
+            : list && (
+                <>
+                  <p>Currently Viewing: {list.results.length}</p>
+                  <p>Mean Weight: {calculateMeanWeight()}</p>
+                  <p>Mean Height: {calculateMeanHeight()}</p>
+                  <ul>
+                    {list.results.map((pokemon) => (
+                      <Pokemon
+                        key={pokemon.name}
+                        name={pokemon.name}
+                        url={pokemon.url}
+                      />
+                    ))}
+                  </ul>
+                </>
+              )}
+        </div>
+      </div>
     </div>
   );
 }

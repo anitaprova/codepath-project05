@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Pokemon.css";
 
 // eslint-disable-next-line react/prop-types
-function Pokemon({ name, url }) {
+function Pokemon({ index, name, url }) {
   const [info, setInfo] = useState({});
 
   useEffect(() => {
@@ -20,9 +21,13 @@ function Pokemon({ name, url }) {
   // }, [info]);
 
   return (
-    <>
-      <div className="pokemon-main">
-        <li className="pokemon">
+    <div className="pokemon-main">
+      <li className="pokemon">
+        <Link
+          style={{ color: "Black" }}
+          to={`/Pokemon/${url.charAt(url.length - 2)}`}
+          key={url.charAt(url.length - 2)}
+        >
           <p>{name}</p>
           <p className="item"> Weight: {info.weight}</p>
           <p className="item"> Height: {info.height}</p>
@@ -34,9 +39,9 @@ function Pokemon({ name, url }) {
                 <span key={index}> {t.type.name} </span>
               ))}
           </p>
-        </li>
-      </div>
-    </>
+        </Link>
+      </li>
+    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-# Web Development Project 6 - 
+# Web Development Project 6 - Pokemon
 
 Submitted by: Anita Prova
 

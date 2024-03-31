@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Pokemon from "./components/Pokemon.jsx";
+import PokemonChart from "./components/PokemonChart.jsx";
 import "./App.css";
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
         json.results.map(async (pokemon) => {
           const response = await fetch(pokemon.url);
           const data = await response.json();
-          return { ...data, url: pokemon.url }; // Including the original URL for reference
+          return { ...data, url: pokemon.url };
         })
       );
       setAll(pokemonList);
@@ -28,9 +29,9 @@ function App() {
     fetchAll().catch(console.error);
   }, []);
 
-  useEffect(() => {
-    console.log("all:", all);
-  }, [all]);
+  // useEffect(() => {
+  //   console.log("all:", all);
+  // }, [all]);
 
   const searchItems = (searchValue) => {
     setSearchInput(searchValue.toLowerCase());
@@ -75,7 +76,7 @@ function App() {
 
   return (
     <div className="whole-page">
-      <h1>View Pokemon</h1>
+      <h1>Pokemon</h1>
       <input
         type="text"
         placeholder="Search..."
@@ -88,6 +89,8 @@ function App() {
         <option value="water">Water</option>
         <option value="grass">Grass</option>
       </select>
+
+      <PokemonChart />
 
       {searchInput.length > 0
         ? filteredResults && (
